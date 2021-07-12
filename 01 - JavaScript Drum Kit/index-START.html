@@ -61,9 +61,13 @@
 
   window.addEventListener('keydown', function(e) {
     const a = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
     if (!a) return;
+    a.currentTime = 0;
 
     a.play();
+    key.classList.add("playing");
+
   });
 
 </script>
