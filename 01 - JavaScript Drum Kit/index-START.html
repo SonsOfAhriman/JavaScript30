@@ -59,6 +59,11 @@
 
 <script>
 
+  function hello() {
+    console.log("hello");
+  };
+
+
   window.addEventListener('keydown', function(e) {
     const a = document.querySelector(`audio[data-key="${e.keyCode}"]`)
     const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
@@ -67,6 +72,13 @@
 
     a.play();
     key.classList.add("playing");
+
+    setTimeout(function removeClass() {
+      key.classList.remove("playing");
+    }, 200);
+
+
+
 
   });
 
