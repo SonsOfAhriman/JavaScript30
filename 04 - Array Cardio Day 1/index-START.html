@@ -54,7 +54,7 @@
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
     function compare(a, b) {
-      if (a.year > b.year) return 1;
+      if (a.year  > b.year) return 1;
       if (b.year > a.year) return -1;
 
       return 0;
@@ -67,20 +67,69 @@
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    const reducer = (accumulater, currentValue) => {
+
+      return accumulater + (currentValue.passed - currentValue.year);
+    };
+
+    console.log(inventors.reduce(reducer, 0));
 
     // 5. Sort the inventors by years lived
+
+    function compareYears(a, b) {
+      if (a.passed - a.year  > b.passed - b.year) return 1;
+      if (b.passed - b.year > a.passed - a.year) return -1;
+
+      return 0;
+    };
+
+    const livedInventors = [...inventors].sort(compareYears);
+
+    console.table(livedInventors);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
 
+    // const category = document.querySelector('.mw-category');
+    // const item = category.querySelectorAll('.mw-category-group');
+
+    // const links = category.querySelectorAll('a');
+
+    // const linksExtra = [...links]
+
+    // const totalToo = linksExtra.map(link => { if (link.innerHTML.indexOf('de') !== -1) return link.innerHTML})
+
+    // const filteredList = totalToo.filter(x => x !== undefined)
+
+
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+
+    function compareName(a, b) {
+      if (a.last  > b.last) return 1;
+      if (b.last > a.last) return -1;
+
+      return 0;
+    };
+
+    const sortedInventorsLast = [...inventors].sort(compareName);
+
+
+    console.table(sortedInventorsLast);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+    const group = data.reduce((acc, current) => {
+      acc[current] = acc[current] + 1 || 1;
+      console.log(acc);
+      return acc;
+    }, {});
+
+
+    console.log(group);
   </script>
 </body>
 </html>
