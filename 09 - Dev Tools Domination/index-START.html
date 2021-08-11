@@ -9,6 +9,9 @@
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
   <script>
+
+    const man = "man";
+
     const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
 
     function makeGreen() {
@@ -18,28 +21,60 @@
     }
 
     // Regular
+    console.log("message");
 
     // Interpolated
+    console.log("hey, this is %s", man);
+    console.log(`I am a ${man}`);
 
     // Styled
+    // console.log('%c Nice to meet you', "font-size: 45px; background: green; text-shadow: 10px 10px 0 red");
 
     // warning!
+    console.warn("NO WAY!");
 
     // Error :|
+    console.error("Error!");
 
     // Info
+    console.info("Humans are all over the Earth");
 
     // Testing
+    const p = document.querySelector('p');
+
+    console.assert(p.classList.contains("no"), "Doesn't contain 'no'");
 
     // clearing
+    // console.clear();
 
     // Viewing DOM Elements
+    console.dir(p);
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(dog.name);
+      console.log(`${dog.name} is cool`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(dog.name);
+    })
 
     // counting
+    console.count("Ryan");
+    console.count("Ryan");
+    console.count("Ryan");
+    console.count("Ryan");
+    console.count("Ryan");
 
     // timing
+    console.time("getting data");
+    fetch("https://api.github.com/users/sonsofahriman")
+      .then(data => data.json())
+      .then(response => {
+        console.timeEnd("getting data");
+        console.log(response);
+      })
+
+    console.table(dogs);
 
   </script>
 </body>
